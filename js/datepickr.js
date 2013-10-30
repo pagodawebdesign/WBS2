@@ -3,6 +3,7 @@
     Copyright (c) 2012
 */
 
+
 var datepickr = (function() {
 	var datepickrs = [],
 	currentDate = new Date(),
@@ -292,9 +293,20 @@ var datepickr = (function() {
 			} while (obj = obj.offsetParent);
 		}
 		
-		var calendarContainer = buildNode('div', { className: 'calendar' });
-		calendarContainer.style.cssText = 'display: none; position: absolute; top: ' + (inputTop + this.element.offsetHeight) + 'px; left: ' + inputLeft + 'px; z-index: 100;';
+		// Position of the calendar is in here but having a hard time getting it to work.
+
+		/**/
+		var offSetBook = $('#booking').offset().top
+		var slider = $('#slider').offset().top
+		console.log("offset Book "+offSetBook)
+		console.log("slider "+slider)
 		
+
+		var calendarContainer = buildNode('div', { className: 'calendar' });
+		calendarContainer.style.cssText = 'display: none; position: absolute; top: ' + (offSetBook-244) + 'px; left: ' + inputLeft + 'px; z-index: 100;';
+	
+		//console.log(inputTop+" "+this.element.offsetHeight)
+
 		this.currentMonth = buildCurrentMonth(this.config, this.currentMonthView, this.currentYearView)
 		var months = buildMonths(this.config, this.currentMonthView, this.currentYearView);
 		months.appendChild(this.currentMonth);
@@ -307,6 +319,8 @@ var datepickr = (function() {
 		calendarContainer.appendChild(months);
 		calendarContainer.appendChild(calendar);
 		
+		var Booking = document.getElementById("booking") 
+		// you can change the below to Booking, but it loses css for some reason.
 		document.body.appendChild(calendarContainer);
 		
 		addEvent(calendarContainer, 'click', function(e) { handlers.calendarClick.call(self, e); });
@@ -362,4 +376,26 @@ var datepickr = (function() {
 			addEvent(this.element, 'click', this.open);
 		}
 	}
-})();
+})(); // end anonymous function
+
+
+function callDatePickers()
+{
+	// Create checkins
+	jQuery(function() {
+	new datepickr('checkin');
+	});
+	
+	/*jQuery(function() {
+	new datepickr('checkout');
+	});
+	*/
+}
+
+$(document).ready(function(){
+
+	setTimeout("callDatePickers()", 1000);
+
+}); // end doc ready
+
+

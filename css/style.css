@@ -88,7 +88,8 @@ a:hover{
 /* logo
 /*-------------------------------------------------- */
 #logo{
-	text-align:center;	
+	text-align:center;
+	/*border-top:2px solid #58453F;	*/
 }
 #logo .inner{
 	margin:40px 0 40px 0;
@@ -101,7 +102,7 @@ a:hover{
 /*-------------------------------------------------- */
 #content{
 	padding:60px 0 60px 0;
-	text-shadow: 1px 1px #fff;
+	/*text-shadow: 1px 1px #fff;*/
 }
 
 
@@ -294,7 +295,11 @@ box-shadow:         1px 1px 1px rgba(50, 50, 50, 0.1);
   display:inline;
   list-style:none;
   position:relative;
+ /* border-right:1px solid #eee;*/
 }
+
+
+/*.firstLi{border-left:1px solid #eee;}*/
 
 #mainmenu a {
   display:block;
